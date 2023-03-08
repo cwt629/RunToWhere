@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunToWhere: 지진 옥외 대피 장소 안내</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>지진 옥외대피장소 정보</h1>
+        <div id="filter">
+            <div>
+                <label>시도 구분</label>
+                <select name="sido">
+                    <option value="default">-----시도 선택-----</option>
+                </select>
+            </div>
+            <div>
+                <label>시군구 구분</label>
+                <select name="sigungu">
+                    <option value="default">-----시군구 선택-----</option>
+                </select>
+            </div>
+        </div>
+        <div id="map"></div> <!-- 지도가 나타날 부분 -->
+        <div id="details">
+            <label><input type="checkbox" name="detailcheck">모든 대피 장소 이름 펼치기</label>
+        </div>
+    </div>
+    <script src="index.js" type="module"></script>
+</body>
+
+</html>
