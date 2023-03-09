@@ -1,3 +1,4 @@
+import Map from "./Map.js"
 import { getAllData } from "./utils/api.js"
 import { storeByCategory } from "./utils/store.js";
 
@@ -12,6 +13,9 @@ export default function App($app) {
         this.dict = storeByCategory(data);
         console.log("데이터를 저장했습니다.");
         console.log(this.dict);
+
+        // 지도
+        const map = new Map();
     }
 
     init();
