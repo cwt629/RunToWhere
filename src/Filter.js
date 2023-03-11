@@ -32,12 +32,6 @@ export default function FilterDiv({ initialState }) {
         })
     }
 
-    this.init = () => {
-        this.$target.innerHTML = `
-        <p>로딩 중입니다...</p>
-        `;
-    }
-
     // 시군구 부분을 다시 그리는 함수
     this.renderSigungu = (sido) => {
         // 해당 시도 명이 존재하지 않으면, default를 고른 경우!
@@ -59,8 +53,6 @@ export default function FilterDiv({ initialState }) {
 
         this.renderSigungu(sido);
     }
-
-    this.init();
 }
 
 // 각 요소를 select 태그의 option 형태로 반환하는 함수

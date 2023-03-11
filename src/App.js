@@ -1,3 +1,4 @@
+import Loading from "./Loading.js"
 import FilterDiv from "./Filter.js"
 import MapDiv from "./Map.js"
 import { getAllData } from "./utils/api.js"
@@ -5,6 +6,7 @@ import { storeByCategory } from "./utils/store.js";
 
 export default function App($app) {
     this.dict = {}; // 데이터가 모두 저장되기 전까지는 null로 비워준다
+    const loading = new Loading();
     const filter = new FilterDiv({ initialState: this.dict });
 
     const init = async () => {
@@ -15,6 +17,9 @@ export default function App($app) {
         this.dict = storeByCategory(data);
         console.log("데이터를 저장했습니다.");
         console.log(this.dict);
+
+        // 로딩 끝
+        loading.complete();
 
         // Filter Div 다시 그리기
         filter.setState(this.dict);
