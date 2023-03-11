@@ -1,3 +1,3 @@
-export default function Map() {
+export default function MapDiv() {
     this.map = new naver.maps.Map('map');
 }

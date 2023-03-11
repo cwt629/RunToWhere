@@ -1,4 +1,4 @@
-import Map from "./Map.js"
+import MapDiv from "./Map.js"
 import { getAllData } from "./utils/api.js"
 import { storeByCategory } from "./utils/store.js";
 
@@ -15,7 +15,7 @@ export default function App($app) {
         console.log(this.dict);
 
         // 지도
-        const map = new Map();
+        const map = new MapDiv();
     }
 
     init();
