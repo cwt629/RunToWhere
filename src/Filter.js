@@ -14,23 +14,50 @@ export default function FilterDiv({ initialState }) {
         this.$target.innerHTML = `
         <div id="sido_filter">
         <label>시도 구분</label>
-        <select name="sido">
+        <select id="sido_selection" name="sido">
         <option value="default">-----시도 선택-----</option>
         ${generateOptions(sidos)}
         </select>
         </div>
         <div id="sigungu_filter">
         <label>시군구 구분</label>
-        <select name="sigungu">
+        <select id="sigungu_selection" name="sigungu">
         <option value="default">-----시군구 선택-----</option>
         </select>
         </div>`
+
+        // 시도 선택 selection 시 이벤트 추가
+        document.getElementById("sido_selection").addEventListener('change', () => {
+            this.handleSidoSelection();
+        })
     }
 
     this.init = () => {
         this.$target.innerHTML = `
         <p>로딩 중입니다...</p>
         `;
+    }
+
+    // 시군구 부분을 다시 그리는 함수
+    this.renderSigungu = (sido) => {
+        // 해당 시도 명이 존재하지 않으면, default를 고른 경우!
+        const sigungu = (Object.keys(this.state).includes(sido)) ? Object.keys(this.state[sido]) : [];
+
+        const $sgg = document.getElementById("sigungu_filter");
+        $sgg.innerHTML = `
+        <label>시군구 구분</label>
+        <select id="sigungu_selection" name="sigungu">
+        <option value="default">-----시군구 선택-----</option>
+        ${generateOptions(sigungu)}
+        </select>
+        `;
+    }
+
+    // 시도 선택 시 불릴 함수
+    this.handleSidoSelection = () => {
+        const sido = document.getElementById('sido_selection').value;
+
+        this.renderSigungu(sido);
     }
 
     this.init();
