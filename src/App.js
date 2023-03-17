@@ -1,6 +1,7 @@
 import Loading from "./Loading.js"
 import FilterDiv from "./Filter.js"
 import MapDiv from "./Map.js"
+import Locations from "./Locations.js"
 import { getAllData } from "./utils/api.js"
 import { storeByCategory } from "./utils/store.js";
 
@@ -9,13 +10,33 @@ export default function App($app) {
         dict: {},
         selectedDict: {}
     }
+    // 로딩 컴포넌트
     const loading = new Loading();
+
+    // 필터 컴포넌트
     const filter = new FilterDiv({
         initialState: this.state.dict,
         onSubmit: (sido, sigungu) => {
             window.alert(`${sido}의 ${sigungu}가 선택되었습니다`);
+
+            updateFilteredDict(sido, sigungu);
         }
     });
+
+    // 장소 목록 컴포넌트
+    const locations = new Locations({
+        initialState: this.state.selectedDict
+    });
+
+    // 필터 선택 시 부를 상태 갱신 함수
+    const updateFilteredDict = (sido, sigungu) => {
+        this.state = {
+            ...this.state,
+            selectedDict: this.state.dict[sido][sigungu]
+        };
+        // 필터 갱신에 따라, locations 컴포넌트 갱신
+        locations.setState(this.state.selectedDict);
+    }
 
     const init = async () => {
         const data = await getAllData();
