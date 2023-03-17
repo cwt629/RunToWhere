@@ -89,7 +89,9 @@ export default function Locations({ initialState }) {
         <ul>
         ${this.getListElements()}
         </ul>
+        <div>
         ${this.getPageElements()}
+        </div>
         `
     }
 

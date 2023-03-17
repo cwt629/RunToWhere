@@ -12,6 +12,7 @@ export default function FilterDiv({ initialState, onSubmit }) {
     // 로딩된 직후의 필터 그리기
     this.renderOverall = () => {
         const sidos = Object.keys(this.state);
+        this.$target.style.display = 'block';
         this.$target.innerHTML = `
         <div id="sido_filter">
         <label>시도 구분</label>
@@ -77,6 +78,9 @@ export default function FilterDiv({ initialState, onSubmit }) {
 
         this.renderSigungu(sido);
     }
+
+    // 초기 상태
+    this.$target.style.display = 'none';
 }
 
 // 각 요소를 select 태그의 option 형태로 반환하는 함수

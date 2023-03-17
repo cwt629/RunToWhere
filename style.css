@@ -1,4 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Dongle&family=Noto+Sans+KR&display=swap');
+
+body {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+#app {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#loading {
+    width: 100%;
+    border: 5px solid brown;
+}
+
+#filter {
+    width: 80%;
+    border: 5px solid blue;
+    text-align: center;
+}
+
+#filter>div {
+    margin: 5px;
+}
+
+#filter>button {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
 #map {
     width: 90%;
     height: 80vh;
+}
+
+#locations {
+    width: 90%;
+    border: 5px solid orange;
+}
+
+#locations>ul {
+    list-style-type: none;
+}
+
+#locations>ul>li {
+    margin: 5px;
+    border: 5px solid transparent;
+}
+
+#locations>ul>li:hover {
+    cursor: pointer;
+    border: 5px solid blue;
+}
+
+#locations>div {
+    text-align: center;
+}
+
+#prevclicker,
+#nextclicker {
+    cursor: pointer;
 }
