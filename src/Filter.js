@@ -1,6 +1,7 @@
-export default function FilterDiv({ initialState }) {
+export default function FilterDiv({ initialState, onSubmit }) {
     this.state = initialState;
     this.$target = document.getElementById('filter');
+    this.onSubmit = onSubmit;
 
     // 로딩된 데이터를 바탕으로 필터를 그린다
     this.setState = (nextState) => {
@@ -24,11 +25,34 @@ export default function FilterDiv({ initialState }) {
         <select id="sigungu_selection" name="sigungu">
         <option value="default">-----시군구 선택-----</option>
         </select>
-        </div>`
+        </div>
+        <button id="filter_submit">필터 적용</button>
+        `
 
         // 시도 선택 selection 시 이벤트 추가
         document.getElementById("sido_selection").addEventListener('change', () => {
             this.handleSidoSelection();
+        })
+
+        // 버튼 클릭 시 이벤트 추가
+        document.getElementById("filter_submit").addEventListener('click', () => {
+            const sido = document.getElementById("sido_selection").value;
+            const sigungu = document.getElementById("sigungu_selection").value;
+
+            // 시도를 선택하지 않은 경우
+            if (sido === "default") {
+                window.alert("시도를 선택해주세요.");
+                return;
+            }
+
+            // 시군구를 선택하지 않은 경우
+            if (sigungu === "default") {
+                window.alert("시군구를 선택해주세요.");
+                return;
+            }
+
+            // 이벤트 발생
+            this.onSubmit(sido, sigungu);
         })
     }
 
