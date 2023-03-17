@@ -66,6 +66,15 @@ export default function Locations({ initialState }) {
         return elements.join("");
     }
 
+    // 특정 페이지를 그리는 함수
+    this.renderPage = (nextPage) => {
+        this.innerState = {
+            ...this.innerState,
+            page: nextPage
+        };
+        this.render();
+    }
+
     this.render = () => {
         // 초기에는 다르게 표기
         if (!this.innerState.initialized) {
@@ -83,6 +92,26 @@ export default function Locations({ initialState }) {
         ${this.getPageElements()}
         `
     }
+
+    // 페이지 넘김 버튼에 대한 이벤트 핸들러
+    this.$target.addEventListener('click', (e) => {
+        // 누른 이전 버튼이나 다음 버튼
+        const prev = e.target.closest('#prevclicker'), next = e.target.closest('#nextclicker');
+
+        // 이전 버튼을 누른 경우
+        if (prev) {
+            const nextPage = (this.innerState.page > 0) ? this.innerState.page - 1 : 0;
+            this.renderPage(nextPage);
+            return;
+        }
+
+        // 다음 버튼을 누른 경우
+        if (next) {
+            const nextPage = (this.innerState.page < this.innerState.maxPage) ? this.innerState.page + 1 : this.innerState.maxPage;
+            this.renderPage(nextPage);
+            return;
+        }
+    })
 
     this.render();
 }
