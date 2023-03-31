@@ -20,6 +20,8 @@ export default function MapDiv({ initialState }) {
             position: center,
             map: this.map
         });
+        // zoom
+        this.map.setZoom(16, false);
         // 마커에 마우스를 갖다 댔을 때 이름 출력
         this.marker.setTitle(this.state.vt_acmdfclty_nm);
     }
