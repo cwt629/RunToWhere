@@ -8,6 +8,8 @@ body {
 
 #app {
     font-family: 'Noto Sans KR', sans-serif;
+    width: 500px;
+    text-align: center;
 }
 
 #loading {
@@ -16,7 +18,7 @@ body {
 }
 
 #filter {
-    width: 80%;
+    width: 100%;
     border: 5px solid blue;
     text-align: center;
 }
@@ -31,17 +33,18 @@ body {
 }
 
 #map {
-    width: 90%;
+    width: 100%;
     height: 80vh;
 }
 
 #locations {
-    width: 90%;
+    width: 100%;
     border: 5px solid orange;
 }
 
 #locations>ul {
     list-style-type: none;
+    padding-left: 0;
 }
 
 #locations>ul>li {
