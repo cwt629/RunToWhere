@@ -1,4 +1,4 @@
-export default function Locations({ initialState }) {
+export default function Locations({ initialState, onLocationClick }) {
     this.state = initialState;
     this.$target = document.getElementById('locations');
     this.innerState = {
@@ -7,6 +7,7 @@ export default function Locations({ initialState }) {
         elementsPerPage: 10, // 페이지 당 출력할 리스트 개수
         maxPage: 0 // 최대 페이지 수
     };
+    this.onLocationClick = onLocationClick;
 
     this.setState = (nextState) => {
         this.state = nextState;
@@ -43,7 +44,7 @@ export default function Locations({ initialState }) {
         const list = this.getPageList();
 
         return list.map((element) => (
-            `<li data-index=${element.index}>${element.data.vt_acmdfclty_nm}</li>`
+            `<li data-index=${element.index} class="location">${element.data.vt_acmdfclty_nm}</li>`
         )).join("");
     }
 
@@ -94,6 +95,17 @@ export default function Locations({ initialState }) {
         </div>
         `
     }
+
+    // 장소 클릭에 대한 이벤트 핸들러
+    this.$target.addEventListener('click', (e) => {
+        const pressed = e.target.closest('.location');
+        if (pressed) {
+            const { index } = pressed.dataset;
+            // index는 문자열 형태이므로 숫자로 바꿔준다
+            const location = this.state[parseInt(index)];
+            this.onLocationClick(location);
+        }
+    })
 
     // 페이지 넘김 버튼에 대한 이벤트 핸들러
     this.$target.addEventListener('click', (e) => {

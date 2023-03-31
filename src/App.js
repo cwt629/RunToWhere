@@ -8,7 +8,8 @@ import { storeByCategory } from "./utils/store.js";
 export default function App($app) {
     this.state = {
         dict: {},
-        selectedDict: {}
+        selectedDict: {},
+        location: null
     }
     // 로딩 컴포넌트
     const loading = new Loading();
@@ -23,9 +24,17 @@ export default function App($app) {
         }
     });
 
+    // 지도 컴포넌트
+    const map = new MapDiv({
+        initialState: this.state.location
+    });
+
     // 장소 목록 컴포넌트
     const locations = new Locations({
-        initialState: this.state.selectedDict
+        initialState: this.state.selectedDict,
+        onLocationClick: (location) => {
+            map.setState(location); // 장소 클릭 시마다 지도에 그 장소 전달
+        }
     });
 
     // 필터 선택 시 부를 상태 갱신 함수
@@ -52,9 +61,6 @@ export default function App($app) {
 
         // Filter Div 다시 그리기
         filter.setState(this.state.dict);
-
-        // 지도
-        //const map = new MapDiv();
     }
 
     init();
