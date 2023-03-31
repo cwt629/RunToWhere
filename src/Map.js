@@ -5,6 +5,11 @@ export default function MapDiv({ initialState }) {
 
     // 현 state 위치에 마커를 찍고, 위치를 해당 위치로 옮기는 함수
     this.setMarker = () => {
+        // 기존 마커가 있으면 삭제해준다
+        if (this.marker) {
+            this.marker.setMap(null);
+        }
+
         const [latitude, longitude] = [parseFloat(this.state.ycord), parseFloat(this.state.xcord)];
         const center = new naver.maps.LatLng(latitude, longitude);
 
