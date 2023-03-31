@@ -15,6 +15,8 @@ export default function MapDiv({ initialState }) {
             position: center,
             map: this.map
         });
+        // 마커에 마우스를 갖다 댔을 때 이름 출력
+        this.marker.setTitle(this.state.vt_acmdfclty_nm);
     }
 
     // state 변경
