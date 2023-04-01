@@ -20,6 +20,7 @@ body {
 #filter {
     width: 100%;
     border: 5px solid blue;
+    margin: 10px 0;
     text-align: center;
 }
 

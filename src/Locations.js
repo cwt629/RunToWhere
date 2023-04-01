@@ -80,13 +80,14 @@ export default function Locations({ initialState, onLocationClick }) {
         // 초기에는 다르게 표기
         if (!this.innerState.initialized) {
             this.innerState = { ...this.innerState, initialized: true };
-            this.$target.innerHTML = `<h2>필터 적용 시 이 부분에 장소 목록이 출력됩니다.</h2>`;
+            this.$target.innerHTML = `<h2>필터 적용 시 옥외 대피 장소 목록 출력</h2>`;
             return;
         }
 
         // 현재 페이지에 해당하는 정보 받아온다
         this.$target.innerHTML = `
-        <h3>선택 장소 목록(장소 이름을 클릭하여 지도 확인)</h3>
+        <h2>옥외 대피 장소 목록</h2>
+        <h3>(장소 클릭 시 지도에 위치가 표시됩니다)</h3>
         <ul>
         ${this.getListElements()}
         </ul>
