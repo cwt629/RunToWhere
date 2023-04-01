@@ -4,6 +4,7 @@ import MapDiv from "./Map.js"
 import Locations from "./Locations.js"
 import { getAllData } from "./utils/api.js"
 import { storeByCategory } from "./utils/store.js";
+import { autoScrollByID } from "./utils/scroll.js";
 
 export default function App($app) {
     this.state = {
@@ -34,6 +35,7 @@ export default function App($app) {
         initialState: this.state.selectedDict,
         onLocationClick: (location) => {
             map.setState(location); // 장소 클릭 시마다 지도에 그 장소 전달
+            autoScrollByID("map"); // map 위치로 자동 스크롤
         }
     });
 
