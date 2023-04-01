@@ -12,6 +12,8 @@ export default function FilterDiv({ initialState, onSubmit }) {
     // 로딩된 직후의 필터 그리기
     this.renderOverall = () => {
         const sidos = Object.keys(this.state);
+        // 시도명을 가나다순 정렬해준다
+        sidos.sort();
         this.$target.style.display = 'block';
         this.$target.innerHTML = `
         <div id="sido_filter">
@@ -61,7 +63,8 @@ export default function FilterDiv({ initialState, onSubmit }) {
     this.renderSigungu = (sido) => {
         // 해당 시도 명이 존재하지 않으면, default를 고른 경우!
         const sigungu = (Object.keys(this.state).includes(sido)) ? Object.keys(this.state[sido]) : [];
-
+        // 시군구 명을 가나다순으로 정렬
+        sigungu.sort();
         const $sgg = document.getElementById("sigungu_filter");
         $sgg.innerHTML = `
         <label>시군구 구분</label>
