@@ -35,7 +35,7 @@ export default function App($app) {
         initialState: this.state.selectedDict,
         onLocationClick: (location) => {
             map.setState(location); // 장소 클릭 시마다 지도에 그 장소 전달
-            autoScrollByID("map"); // map 위치로 자동 스크롤
+            autoScrollByID("mapdiv"); // mapdiv 위치로 자동 스크롤
         }
     });
 
