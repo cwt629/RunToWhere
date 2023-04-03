@@ -20,8 +20,8 @@ export default function App($app) {
         initialState: this.state.dict,
         onSubmit: (sido, sigungu) => {
             window.alert(`${sido}의 ${sigungu}가 선택되었습니다`);
-
             updateFilteredDict(sido, sigungu);
+            autoScrollByID("locations"); // 필터 선택 시, 바로 장소 목록으로 이동
         }
     });
 
