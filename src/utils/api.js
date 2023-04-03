@@ -34,6 +34,13 @@ export async function getData(page = 1) {
     const url = `${BASE}?${getQuery(sendingData)}`; // 쿼리문과 함께 url 받아옴
 
     const response = await fetch(url);
+    // 호출 오류인 경우
+    if (!response.ok) {
+        const errorMessage = `API 호출에 실패하였습니다.\n에러 코드:${response.status}`;
+        window.alert(errorMessage);
+        throw new Error(errorMessage);
+    }
+
     const result = await response.json();
 
     return result;
