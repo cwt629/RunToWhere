@@ -51,12 +51,12 @@ export default function App($app) {
 
     const init = async () => {
         const data = await getAllData();
-        console.log("모든 데이터를 받아왔습니다.");
-        console.log(data);
+        // console.log("모든 데이터를 받아왔습니다.");
+        // console.log(data);
 
         this.state.dict = storeByCategory(data);
-        console.log("데이터를 저장했습니다.");
-        console.log(this.state.dict);
+        // console.log("데이터를 저장했습니다.");
+        // console.log(this.state.dict);
 
         // 로딩 끝
         loading.complete();
