@@ -1,5 +1,5 @@
 //const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake2/getArea1List";
-const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake5";
+const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake5"; // 변경된 url
 const ENC_KEY = "t%2BaPlQWgYTpT%2FIe4h2Ew%2FDfmCh3lHWaleDh311A5XZPa3DWZ3uiXuJ6se8aI4oO188kaRL6xO11aHuCw3VPtfw%3D%3D";
 const MAX_NUM_OF_ROWS = 1000;
 
