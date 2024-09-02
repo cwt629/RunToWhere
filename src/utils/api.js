@@ -1,6 +1,8 @@
 //const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake2/getArea1List";
-const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake5"; // 변경된 url
+//const PROXY_URL = "https://cors-anywhere.herokuapp.com/"; // proxy url
+export const BASE = "https://apis.data.go.kr/1741000/EmergencyAssemblyArea_Earthquake5/getArea4List2"; // 변경된 url
 const ENC_KEY = "t%2BaPlQWgYTpT%2FIe4h2Ew%2FDfmCh3lHWaleDh311A5XZPa3DWZ3uiXuJ6se8aI4oO188kaRL6xO11aHuCw3VPtfw%3D%3D";
+const DEC_KEY = "t+aPlQWgYTpT/Ie4h2Ew/DfmCh3lHWaleDh311A5XZPa3DWZ3uiXuJ6se8aI4oO188kaRL6xO11aHuCw3VPtfw==";
 const MAX_NUM_OF_ROWS = 1000;
 
 export async function getAllData() {
@@ -8,7 +10,7 @@ export async function getAllData() {
     const firstData = await getData(1);
 
     // 전체 개수 받아오기
-    const totalCount = firstData.EarthquakeOutdoorsShelter[0].head[0].totalCount;
+    const totalCount = firstData.EarthquakeOutdoorsShelter2[0].head[0].totalCount;
 
     // 최대 페이지 수
     const totalPage = Math.ceil(totalCount / MAX_NUM_OF_ROWS);
@@ -41,15 +43,14 @@ export async function getData(page = 1) {
         window.alert(errorMessage);
         throw new Error(errorMessage);
     }
-
+    //console.log(await response.text()); // response를 텍스트 형태로 확인해보기 위함
     const result = await response.json();
-
     return result;
 }
 
 // 받아온 데이터에서 각 지역 정보에 해당하는 부분만 추출해 반환하는 함수
 function extractData(data) {
-    return data.EarthquakeOutdoorsShelter[1].row;
+    return data.EarthquakeOutdoorsShelter2[1].row;
 }
 
 // sendingData를 쿼리형식으로 변형하는 함수
